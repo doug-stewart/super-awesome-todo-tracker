@@ -107,7 +107,20 @@ that scales well as the app grows in complexity.
 Let's phase it, this will be a wireframe prototype at best. In order for this to be a truly
 shippable product we would need quite a few additional features.
 
-#### 1. User accounts.
+#### 1. Mobile UX leaves a lot to be desired.
+
+While it mostly works on mobile devices there are some notable UX issues that would need to be
+addressed.
+
+1. Drag-and-drop is buggy. You have to press-and-hold on the target in order to initiate a drag,
+   which is not acceptable and not clear to users. Honestly I'd remove this except I'm out of time.
+2. Touch targets are too small. While touchable they are too small for anyone with fine-motor
+   issues. A minimum solution to this would be to move a lot of the editing into a separate state so
+   drag/drop can be the entire todo item instead of just the handle and then the select behavior
+   would switch to just a "select", etc. Either way, really needs a UI pass. This was a first-run
+   best effort with minimum time, however.
+
+#### 2. User accounts.
 
 For simplicity's sake and due to time constraints Super Awesome Todo Tracker won't have a concept of
 users and everything will exist as a single entry inside the browser's local storage. This is not a
@@ -130,20 +143,20 @@ from the backend concerns, this would include:
 - **User settings and subscription management.** Users should be able to update their email,
   password, account security, and manage any subscription preferences.
 
-#### 2. Due dates behaviors and reminders.
+#### 3. Due dates behaviors and reminders.
 
 Currently todos are just a flat list with no concept of due dates or reminders. A fully featured
 todo app would include the ability to add due dates with optional reminders and notifications. Users
 would also need to be able to sort and group their todos by due date and by past due.
 
-#### 3. Dedicate iOS and Android apps.
+#### 4. Dedicate iOS and Android apps.
 
 While the web app will be fully functional on mobile browsers, a dedicated iOS and Android app would
 provide a more seamless experience for mobile users. Such apps could be little more than a webview
 wrapper of the web app. This would also allow for more robust notifications and offline support as
 well as background tasks.
 
-#### 4. Additional functionality.
+#### 5. Additional functionality.
 
 A singular broad list of todos is a good start but we'd want to consider additional features and
 whether or not we thought they were core and necessary for initial release.
