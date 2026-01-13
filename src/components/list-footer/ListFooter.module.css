@@ -1,0 +1,25 @@
+.footer {
+    background-color: var(--color-base);
+    border-top: 1px solid oklch(from currentColor l c h / 0.12);
+    bottom: 0;
+    display: grid;
+    gap: inherit;
+    grid-column: 1 / -1;
+    grid-template-columns: minmax(33vw, max-content);
+    inset-inline: 0;
+    justify-content: center;
+    padding: var(--scale);
+    position: fixed;
+
+    @media (width > 400px) {
+        grid-auto-flow: column;
+        grid-template-columns: unset;
+    }
+}
+
+.delete {
+    &:hover,
+    &:focus-visible {
+        background-color: var(--color-danger);
+    }
+}

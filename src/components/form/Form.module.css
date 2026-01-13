@@ -1,0 +1,66 @@
+.container {
+    container-type: inline-size;
+    grid-area: form;
+}
+
+.form {
+    align-items: center;
+    display: grid;
+    gap: 0 0.6em;
+    grid-template:
+        "completed title" auto
+        / max-content 1fr;
+    position: relative;
+
+    :where(input) {
+        display: block;
+        width: 100%;
+    }
+}
+
+.title {
+    font-weight: 600;
+    grid-area: title;
+}
+
+.completed {
+    border: 1px solid;
+    border-radius: 50%;
+    grid-area: completed;
+    height: calc(var(--scale) * 1.5);
+    position: relative;
+    width: calc(var(--scale) * 1.5);
+
+    &::after {
+        background-color: var(--color-main);
+        content: "";
+        inset: 18%;
+        mask: url("../../assets/check.svg") no-repeat center / contain;
+        opacity: 0;
+        position: absolute;
+    }
+
+    &:hover,
+    &:focus-visible {
+        &::after {
+            opacity: 1;
+        }
+    }
+}
+
+.isCompleted {
+    color: oklch(from currentColor l c h / 0.48);
+
+    .completed {
+        background-color: var(--color-success);
+        border-color: var(--color-success);
+
+        &::after {
+            opacity: 1;
+        }
+    }
+
+    textarea {
+        text-decoration: line-through;
+    }
+}

@@ -1,0 +1,9 @@
+.dialog {
+    gap: calc(var(--scale) * 0.5);
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    max-width: 400px;
+
+    > *:not(button) {
+        grid-column: 1 / -1;
+    }
+}

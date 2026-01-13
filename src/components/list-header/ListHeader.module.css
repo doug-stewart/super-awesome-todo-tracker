@@ -1,0 +1,18 @@
+.header {
+    display: grid;
+    gap: inherit;
+    grid-auto-columns: max-content;
+    grid-auto-flow: column;
+    grid-column: 1 / -1;
+    justify-content: space-between;
+}
+
+.add {
+    background-color: var(--color-accent);
+    color: var(--color-base);
+
+    &:hover,
+    &:focus-visible {
+        background-color: oklch(from var(--color-accent) l c h / 0.8);
+    }
+}

@@ -1,0 +1,73 @@
+.todo {
+    align-items: start;
+    border: 1px solid currentColor;
+    border-radius: 8px;
+    display: grid;
+    gap: inherit;
+    grid-column: 1 / -1;
+    grid-template: subgrid / subgrid;
+    padding: calc(var(--scale) * 0.5);
+    position: relative;
+}
+
+.select,
+.delete {
+    top: 50%;
+    translate: 0 -50%;
+}
+
+.select {
+    background-color: transparent;
+    opacity: 0.48;
+    padding: 0;
+    padding: calc(var(--scale) * 0.25);
+    position: absolute;
+    right: calc(100% + var(--scale) * 0.5);
+    width: calc(var(--scale) * 2);
+
+    svg {
+        display: block;
+        height: 100%;
+        width: 100%;
+    }
+
+    &[aria-checked="true"],
+    &:hover,
+    &:focus-visible {
+        background-color: transparent;
+        opacity: 1;
+    }
+}
+
+.delete {
+    left: calc(100% + var(--scale) * 0.5);
+    padding: calc(var(--scale) * 0.5);
+    position: absolute;
+
+    &:hover,
+    &:focus-visible {
+        background-color: var(--color-danger);
+    }
+}
+
+.remove {
+    &:hover,
+    &:focus-visible {
+        background-color: var(--color-danger);
+    }
+}
+
+.keep {
+    background-color: var(--color-accent);
+    color: var(--color-base);
+
+    &:hover,
+    &:focus-visible {
+        background-color: oklch(from var(--color-accent) l c h / 0.8);
+    }
+}
+
+.handle {
+    grid-area: handle;
+    height: 100%;
+}

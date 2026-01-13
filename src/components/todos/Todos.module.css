@@ -1,0 +1,14 @@
+.wrapper {
+    display: grid;
+    gap: 0.6em;
+    grid-auto-rows: auto;
+    grid-template-areas: "handle form";
+    grid-template-columns: max-content 1fr;
+}
+
+.header {
+    display: grid;
+    gap: inherit;
+    grid-column: 1 / -1;
+    grid-template-columns: subgrid;
+}

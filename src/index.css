@@ -1,0 +1,253 @@
+@layer base {
+    /* Reset & Defaults */
+    :root {
+        --color-base: light-dark(#f1e9fc, #332844);
+        --color-main: light-dark(#1d1c2c, #d5d3f0);
+        --color-accent: light-dark(#216eb5, #61b3ff);
+        --color-danger: light-dark(#f83131, #be0f0f);
+        --color-success: light-dark(#14c354, #0f903e);
+
+        --scale: clamp(0.75rem, 0.5357rem + 1.0714vw, 1.5rem); /* 12px to 24px */
+
+        color-scheme: light dark;
+    }
+
+    ::selection {
+        background-color: var(--color-main);
+        color: var(--color-base);
+    }
+
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+        color: currentcolor;
+        margin: 0;
+        padding: 0;
+        transition-behavior: allow-discrete;
+        vertical-align: baseline;
+    }
+
+    [role="presentation"],
+    :disabled {
+        pointer-events: none;
+    }
+
+    :focus {
+        outline: 1px solid;
+    }
+
+    @supports selector(:focus-visible) {
+        :focus {
+            outline: none;
+        }
+    }
+
+    :focus-visible {
+        outline: 1px solid;
+    }
+
+    :target {
+        scroll-margin-block: 1rlh;
+    }
+
+    html {
+        text-size-adjust: none;
+    }
+
+    body {
+        background-color: var(--color-base);
+        color: var(--color-main);
+        font:
+            200 var(--scale)/1.4 system-ui,
+            sans-serif;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        min-height: 100dvh;
+        text-rendering: geometricprecision;
+    }
+
+    blockquote,
+    body,
+    dd,
+    dl,
+    figure,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p {
+        margin: 0;
+    }
+
+    a:where(:not([class])) {
+        color: currentcolor;
+        text-decoration-skip-ink: auto;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+        appearance: unset;
+        font: inherit;
+    }
+
+    button,
+    input[type="button"],
+    input[type="checkbox"],
+    input[type="radio"],
+    select {
+        cursor: pointer;
+    }
+
+    button,
+    input {
+        cursor: pointer;
+    }
+
+    button,
+    input[type="button"] {
+        background-color: oklch(from currentColor l c h / 0.12);
+        border: unset;
+        border-radius: 4px;
+        display: inline-flex;
+        font-size: 0.8em;
+        font-weight: 600;
+        gap: 0.6ch;
+        padding: 0.4em 0.8em;
+        place-content: center;
+        place-items: center;
+
+        svg {
+            height: 1.2em;
+            width: auto;
+        }
+
+        :active {
+            outline: unset;
+        }
+
+        &:disabled {
+            cursor: not-allowed;
+            opacity: 0.48;
+        }
+
+        &:hover,
+        &:focus-visible {
+            background-color: oklch(from currentColor l c h / 0.18);
+            outline: unset;
+        }
+    }
+
+    input,
+    textarea {
+        appearance: none;
+        background: unset;
+        border: unset;
+        border-bottom: oklch(from currentcolor l c h / 0) 1px solid;
+        padding: 0.4em 0;
+
+        &::placeholder {
+            color: color-mix(in oklch, var(--color-main), var(--color-base) 60%);
+            font-style: italic;
+        }
+
+        &:focus {
+            outline: unset;
+        }
+
+        &:hover,
+        &:focus-visible {
+            border-color: oklch(from currentcolor l c h / 0.18);
+        }
+
+        &[type="checkbox"],
+        &[type="radio"] {
+            display: grid;
+            height: 1.5em;
+            padding: unset;
+            place-items: center;
+            width: 1.5em;
+        }
+
+        &[type="checkbox"]:checked::after {
+            content: "✓";
+        }
+
+        &[type="radio"] {
+            border-radius: 50%;
+
+            &[checked]::after {
+                background-color: currentColor;
+                content: "";
+            }
+        }
+    }
+
+    textarea {
+        height: 3lh;
+        resize: vertical;
+        width: 100%;
+
+        @supports (field-sizing: content) {
+            field-sizing: content;
+            height: auto;
+            resize: none;
+        }
+    }
+
+    label {
+        &:has(> input[type="checkbox"], > input[type="radio"]) {
+            align-items: center;
+            display: inline-grid;
+            gap: 0.4em;
+            grid-template-columns: auto 1fr;
+        }
+    }
+
+    dialog {
+        background-color: var(--color-base);
+        border: 1px solid oklch(from currentColor l c h / 0.2);
+        margin: auto;
+        padding: 3rem;
+        text-align: center;
+        width: calc(100vw - 4rem);
+
+        &::backdrop {
+            background: var(--color-base);
+            opacity: 0.8;
+        }
+    }
+
+    :where(dialog[open]) {
+        display: grid;
+        gap: 10px;
+        grid-template-columns: repeat(auto-fit, minmax(8ch, 1fr));
+        margin-top: 1rem;
+    }
+
+    h1,
+    h2,
+    h3 {
+        text-wrap: balance;
+    }
+
+    img,
+    picture {
+        display: block;
+        height: auto;
+        max-width: 100%;
+    }
+
+    ul,
+    ol {
+        &:where([class]) {
+            list-style-type: none;
+            margin: unset;
+            padding: unset;
+        }
+    }
+}
