@@ -5,7 +5,7 @@ import svgr from "vite-plugin-svgr";
 import { defineConfig } from "vitest/config";
 
 export default defineConfig({
-    base: "/super-aweesome-todo-tracker",
+    base: "/super-awesome-todo-tracker",
     plugins: [react(), svgr()],
     resolve: {
         alias: {
